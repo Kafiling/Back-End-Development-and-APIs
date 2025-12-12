@@ -18,7 +18,11 @@ server.on('request',(req,res) => {
         //The respond will be writeable Stream
         res.write(chunk)
     })
-
+    
+    //when data end => end respond
+    readableStream.on('end', () => {
+        res.end();
+    })
 })
 
 //open server
