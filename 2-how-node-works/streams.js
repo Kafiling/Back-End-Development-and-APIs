@@ -18,10 +18,15 @@ server.on('request',(req,res) => {
         //The respond will be writeable Stream
         res.write(chunk)
     })
-    
+
     //when data end => end respond
     readableStream.on('end', () => {
         res.end();
+    })
+    readableStream.on('err', () => {
+    console.log(err)
+    res.statusCode = 500
+    res.end("File not found")
     })
 })
 
