@@ -2,6 +2,18 @@ const EventEmitter = require("events")
 
 const myEmitter = new EventEmitter();
 
+//!! Best Prac : Create new class that inhert from EventEmitter
+// Use ES6 Syntax
+class Sales extends EventEmitter {
+    // inti class
+    constructor() {
+        super() // Inhert all method of parent class
+    }
+}
+
+myEmitter = new Sales()
+
+
 myEmitter.on("newSale",()=>{
     console.log('There was a new sale!')
 })
