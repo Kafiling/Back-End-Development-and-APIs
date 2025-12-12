@@ -28,6 +28,12 @@ server.on('request',(req,res) => {
     res.statusCode = 500
     res.end("File not found")
     })
+
+    //Solution 3 : Handle "Backpresure (data in faster than we can process)" problem with pipe
+    readableStream.pipe(res)
+    // readableStream.pipe(writeableDestination)
+
+    //pipe handle all feature of solution 2 for you
 })
 
 //open server
